@@ -39,7 +39,7 @@
                         Foreground="#fefefe"
                         CornerRadius="10"
                         
-                        Command="{Binding CreateWorkflowAsync}"/>
+                        Command="{Binding CreateWorkflowCommand}"/>
             </Grid>
         </Border>
     </StackPanel>

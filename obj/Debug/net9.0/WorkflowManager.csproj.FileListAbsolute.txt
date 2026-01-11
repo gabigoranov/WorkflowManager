@@ -199,3 +199,8 @@ D:\Projects\WorkflowManager\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3
 D:\Projects\WorkflowManager\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
 D:\Projects\WorkflowManager\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
 D:\Projects\WorkflowManager\obj\Debug\net9.0\WorkflowManager.sourcelink.json
+D:\Projects\WorkflowManager\bin\Debug\net9.0\Avalonia.ReactiveUI.dll
+D:\Projects\WorkflowManager\bin\Debug\net9.0\DynamicData.dll
+D:\Projects\WorkflowManager\bin\Debug\net9.0\ReactiveUI.dll
+D:\Projects\WorkflowManager\bin\Debug\net9.0\Splat.dll
+D:\Projects\WorkflowManager\bin\Debug\net9.0\System.Reactive.dll

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using StudyPlatform.Data.Common;
 using WorkflowManager.ViewModels;
 
@@ -13,8 +14,9 @@ public class WorkflowService : IWorkflowService
         _repository = repository;
     }
 
-    public Task<Models.Workflow> CreateWorkflowAsync(WorkflowViewModel workflow)
+    public Task<Models.Workflow> CreateWorkflowAsync(Models.Workflow workflow)
     {
+        Debug.WriteLine(workflow);
         throw new System.NotImplementedException();
     }
 }

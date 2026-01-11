@@ -5,5 +5,5 @@ namespace WorkflowManager.Services.Common.Workflow;
 
 public interface IWorkflowService
 {
-    public Task<Models.Workflow> CreateWorkflowAsync(WorkflowViewModel workflow);
+    public Task<Models.Workflow> CreateWorkflowAsync(Models.Workflow workflow);
 }

@@ -5,6 +5,7 @@ using WorkflowManager.Data;
 using WorkflowManager.Services.Common.Workflow;
 using WorkflowManager.ViewModels;
 
+namespace WorkflowManager.Services.Common;
 
 public static class ServiceCollectionExtensions
 {
@@ -13,7 +14,7 @@ public static class ServiceCollectionExtensions
         collection.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseSqlite("Data Source=WorkflowManager.db");
-        });
+        }, ServiceLifetime.Singleton);
         
         collection.AddSingleton<IRepository, Repository>();
         collection.AddTransient<IWorkflowService, WorkflowService>();
