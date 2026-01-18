@@ -34,6 +34,9 @@ build_property.EnableCodeStyleSeverity =
 [D:/Projects/WorkflowManager/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[D:/Projects/WorkflowManager/Views/CreateWorkflow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [D:/Projects/WorkflowManager/Views/HomeView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

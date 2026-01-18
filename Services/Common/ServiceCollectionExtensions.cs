@@ -20,7 +20,6 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<IWorkflowService, WorkflowService>();
         collection.AddTransient<MainWindowViewModel>();
         collection.AddTransient<HomeViewModel>();
-        
-
+        collection.AddTransient<CreateWorkflowViewModel>();
     }
 }

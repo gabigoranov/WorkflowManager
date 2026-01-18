@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -15,6 +15,16 @@ public partial class MainWindow : Window
     public void DragWindow(object? sender, PointerPressedEventArgs e)
     {
         BeginMoveDrag(e);
+    }
+
+    private void MinimizeWindow(object? sender, RoutedEventArgs e)
+    {
+        WindowState = WindowState.Minimized;
+    }
+    
+    private void CloseWindow(object? sender, RoutedEventArgs e)
+    {
+        Environment.Exit(0);
     }
 
 }

@@ -1,13 +1,18 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
+using ReactiveUI;
+using WorkflowManager.ViewModels;
 
 namespace WorkflowManager.Views;
 
-public partial class HomeView : UserControl
+public partial class HomeView :  ReactiveUserControl<HomeViewModel>
 {
     public HomeView()
     {
+        this.WhenActivated(disposables => { });
+        AvaloniaXamlLoader.Load(this);
         InitializeComponent();
     }
 }

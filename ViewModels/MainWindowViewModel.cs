@@ -17,13 +17,16 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     private readonly HomeViewModel _homeViewModel;
+    private readonly CreateWorkflowViewModel _createWorkflowViewModel;
 
-    public MainWindowViewModel(HomeViewModel homeViewModel)
+    public MainWindowViewModel(HomeViewModel homeViewModel, CreateWorkflowViewModel createWorkflowViewModel)
     {
         _homeViewModel = homeViewModel;
+        _createWorkflowViewModel = createWorkflowViewModel;
 
         CurrentViewModel = _homeViewModel; // initial
     }
 
     public void GoHome() => CurrentViewModel = _homeViewModel;
+    public void GoCreateWorkflow() => CurrentViewModel = _createWorkflowViewModel;
 }

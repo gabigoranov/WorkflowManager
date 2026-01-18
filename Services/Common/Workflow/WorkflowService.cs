@@ -5,18 +5,11 @@ using WorkflowManager.ViewModels;
 
 namespace WorkflowManager.Services.Common.Workflow;
 
-public class WorkflowService : IWorkflowService
+public class WorkflowService(IRepository repository) : IWorkflowService
 {
-    private readonly IRepository  _repository;
-
-    public WorkflowService(IRepository repository)
+    public async Task<Models.Workflow> CreateWorkflowAsync(Models.Workflow workflow)
     {
-        _repository = repository;
-    }
-
-    public Task<Models.Workflow> CreateWorkflowAsync(Models.Workflow workflow)
-    {
-        Debug.WriteLine(workflow);
-        throw new System.NotImplementedException();
+        await repository.AddAsync(workflow);
+        return workflow;
     }
 }

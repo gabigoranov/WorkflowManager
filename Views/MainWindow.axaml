@@ -18,7 +18,7 @@
         ExtendClientAreaTitleBarHeightHint="0"
         SystemDecorations="None">
     
-    <Design.DataContext>
+    <Design.DataContext>    
         <vm:MainWindowViewModel d:IsDesignTimeCreatable="True"/>
     </Design.DataContext>
 
@@ -27,11 +27,14 @@
         
         <StackPanel>
             <Border Margin="5" CornerRadius="10" Background="CornflowerBlue" PointerPressed="DragWindow" Padding="5">
-                <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto">
+                <Grid ColumnDefinitions="*,Auto, Auto" RowDefinitions="Auto">
                     <TextBlock Text="Workflow Manager"
                                FontSize="24"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"/>
+                    
+                    <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Click="MinimizeWindow">Min</Button>
+                    <Button Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Click="CloseWindow">Close</Button>
                 </Grid>
             </Border>
         </StackPanel>

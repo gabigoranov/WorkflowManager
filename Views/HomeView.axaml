@@ -1,15 +1,78 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewModels="clr-namespace:WorkflowManager.ViewModels"
+             xmlns:models="clr-namespace:WorkflowManager.Models"
              x:Class="WorkflowManager.Views.HomeView"
              x:DataType="viewModels:HomeViewModel">
 
-    <Button Grid.Column="1"
-            Content="Create"
-            Command="{Binding CreateWorkflowCommand}"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Foreground="#fefefe"
-            CornerRadius="10"/>
+    <Grid RowDefinitions="Auto,*"
+          Margin="12">
 
+        <!-- ACTION BANNER -->
+        <Border Grid.Row="0"
+                Background="#2a2a2a"
+                CornerRadius="12"
+                Padding="12"
+                Margin="0,0,0,12">
+
+            <Grid ColumnDefinitions="*,Auto">
+                
+                <!-- Left side (optional title / info) -->
+                <TextBlock Text="Workflows"
+                           FontSize="22"
+                           VerticalAlignment="Center"/>
+
+                <!-- Right side (actions) -->
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            Spacing="10">
+
+                    <Button Content="Create"
+                            Command="{Binding CreateWorkflowCommand}"
+                            CornerRadius="8"/>
+
+                    <Button Content="Edit"
+                            Command="{Binding EditWorkflowCommand}"
+                            CornerRadius="8"/>
+
+                    <Button Content="Delete"
+                            Command="{Binding DeleteWorkflowCommand}"
+                            CornerRadius="8"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- WORKFLOW LIST -->
+        <Border Grid.Row="1"
+                Background="#1a1a1a"
+                CornerRadius="12"
+                Padding="8">
+
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding Workflows}"  x:DataType="viewModels:HomeViewModel">
+                    
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="models:Workflow">
+                            <Border Background="#2e2e2e"
+                                    CornerRadius="8"
+                                    Padding="12"
+                                    Margin="0,0,0,8">
+
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Text="{Binding Title}"
+                                               FontSize="18"/>
+
+                                    <TextBlock Grid.Column="1"
+                                               Text="{Binding Status}"
+                                               Opacity="0.7"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+
+    </Grid>
 </UserControl>

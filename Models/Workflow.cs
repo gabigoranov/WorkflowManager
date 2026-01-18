@@ -14,6 +14,10 @@ public class Workflow()
     [StringLength(30)]
     public string Title { get; set; }
     
+    [Required]
+    [StringLength(30)]
+    public string Status { get; set; }
+    
     [ForeignKey(nameof(Process))]
     public List<Process> Processes { get; set; }
 }
