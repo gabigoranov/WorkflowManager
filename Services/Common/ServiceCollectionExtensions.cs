@@ -10,6 +10,7 @@ using WorkflowManager.Services.Dialog;
 using WorkflowManager.Services.Navigation;
 using WorkflowManager.Services.Process;
 using WorkflowManager.Services.Startup;
+using WorkflowManager.Services.Theme;
 using WorkflowManager.Services.Workflow;
 using WorkflowManager.Services.WorkflowState;
 using WorkflowManager.ViewModels;
@@ -54,6 +55,8 @@ public static class ServiceCollectionExtensions
         collection.AddSingleton<IRepository, Repository>();
         collection.AddSingleton<MainWindowViewModel>();
         collection.AddSingleton<SidebarViewModel>();
+        collection.AddSingleton<SettingsViewModel>();
+        collection.AddSingleton<IThemeService, ThemeService>();
         collection.AddSingleton<IWorkflowStateService, WorkflowStateService>();
         collection.AddSingleton<IStartupService>(sp =>
             GetOsDependentStartupService());

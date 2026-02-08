@@ -28,6 +28,7 @@ public partial class SidebarViewModel(INavigationService navigation) : ViewModel
     private void GoSettings()
     {
         SelectedNavItem = "Settings";
+        navigation.Navigate<SettingsViewModel>();
     }
     
     public bool IsHomeSelected => SelectedNavItem == "Home";

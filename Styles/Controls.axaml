@@ -63,4 +63,21 @@
         <Setter Property="FontSize" Value="18"></Setter>
         <Setter Property="FontWeight" Value="SemiBold"></Setter>
     </Style>
+    
+    <!-- CheckBoxes -->
+    
+    <Style Selector="CheckBox /template/ ContentPresenter">
+        <Setter Property="Foreground"
+                Value="{DynamicResource Color.Text.Primary}" />
+    </Style>
+    
+    <Style Selector="CheckBox:pointerover /template/ ContentPresenter">
+        <Setter Property="Foreground"
+                Value="{DynamicResource Color.Text.Primary}" />
+    </Style>
+    
+    <Style Selector="CheckBox:pressed /template/ ContentPresenter">
+        <Setter Property="Foreground"
+                Value="{DynamicResource Color.Text.Primary}" />
+    </Style>
 </Styles>

@@ -1,0 +1,46 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:WorkflowManager.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WorkflowManager.Views.SettingsView"
+             x:DataType="viewModels:SettingsViewModel">
+    <UserControl.Styles>
+        <Style Selector="Border.MainContentWrapper">
+            <Setter Property="Padding" Value="{DynamicResource Spacing.Horizontal.2Xl}"/>
+        </Style>
+    </UserControl.Styles>
+    
+    <Grid RowDefinitions="Auto, *" RowSpacing="{DynamicResource Spacing.2Xl}">
+        <Border Grid.Row="1" Classes="MainContentWrapper">
+            <Grid RowDefinitions="Auto, Auto" RowSpacing="{DynamicResource Spacing.Lg}">
+                <!-- Info text -->
+                <StackPanel Grid.Row="0" Orientation="Vertical" Spacing="{DynamicResource Spacing.Xs}">
+                    <TextBlock Classes="PrimaryText HeaderLg">App Settings</TextBlock>
+                    <TextBlock Classes="SecondaryText ParagraphMd">Manage common settings for the app</TextBlock>
+                </StackPanel>
+                
+                <!-- Settings list -->
+                <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="{DynamicResource Spacing.Xl}">
+                    <!-- Run on startup -->
+                    <CheckBox VerticalAlignment="Bottom"
+                              HorizontalAlignment="Left"
+                              Content="Run on startup"
+                              IsChecked="{Binding IsStartupEnabled, Mode=TwoWay}"
+                              IsThreeState="False"/>
+                    
+                    <!-- Dark mode toggle -->
+                    <CheckBox VerticalAlignment="Bottom"
+                              HorizontalAlignment="Left"
+                              Content="Enable dark mode"
+                              IsChecked="{Binding IsDarkModeEnabled, Mode=TwoWay}"
+                              IsThreeState="False"/>
+                </StackPanel>
+                
+            </Grid>
+        </Border>
+    </Grid>
+    
+    
+</UserControl>

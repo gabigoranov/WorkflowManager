@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using WorkflowManager.Services.AutoMapper;
 using WorkflowManager.Services.Common;
 using WorkflowManager.Services.Navigation;
+using WorkflowManager.Services.Theme;
 using WorkflowManager.ViewModels;
 using WorkflowManager.Views;
 
@@ -48,6 +49,10 @@ public class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        // Initialize the theme immediately
+        var themeService = Services.GetRequiredService<IThemeService>();
+        themeService.Initialize(this);
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             var main = Services.GetRequiredService<MainWindowViewModel>();

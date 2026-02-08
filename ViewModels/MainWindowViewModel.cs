@@ -16,4 +16,6 @@ public partial class MainWindowViewModel : ViewModelBase
         Sidebar = sidebar;
         navigation.Navigated += vm => CurrentViewModel = vm;
     }
+
+    
 }

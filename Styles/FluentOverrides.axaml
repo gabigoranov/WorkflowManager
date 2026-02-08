@@ -22,8 +22,17 @@
     <StaticResource x:Key="TextBlockForeground" ResourceKey="Color.Text.Primary" />
     
     <StaticResource x:Key="FlyoutPresenterBackground" ResourceKey="Color.Card" />
+    <StaticResource x:Key="FlyoutPresenterForeground" ResourceKey="Color.Text.Primary" />
     <StaticResource x:Key="MenuFlyoutPresenterBackground" ResourceKey="Color.Card" />
+    <StaticResource x:Key="MenuFlyoutPresenterForeground" ResourceKey="Color.Text.Primary" />
     <StaticResource x:Key="FlyoutPresenterBorderBrush" ResourceKey="Color.Border" />
     <StaticResource x:Key="MenuFlyoutPresenterBorderBrush" ResourceKey="Color.Border" />
+    
+    <StaticResource x:Key="SystemControlForegroundBaseHighBrush" ResourceKey="Color.Text.Primary" />
+
+    <StaticResource x:Key="MenuFlyoutItemForeground" ResourceKey="Color.Text.Primary" />
+    <StaticResource x:Key="MenuFlyoutItemForegroundPointerOver" ResourceKey="Color.Text.Primary" />
+    <StaticResource x:Key="MenuFlyoutItemForegroundPressed" ResourceKey="Color.Text.Primary" />
+    <StaticResource x:Key="MenuFlyoutItemForegroundDisabled" ResourceKey="Color.Text.Secondary" />
 
 </ResourceDictionary>

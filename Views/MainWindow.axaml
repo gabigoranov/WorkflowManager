@@ -10,11 +10,10 @@
         Title="FlowState"
         Width="1280"
         Height="800"
-        Background="{DynamicResource AppBackground}"
-        Foreground="{DynamicResource PrimaryText}"
+        Background="{DynamicResource Color.Background}"
+        Foreground="{DynamicResource Color.Text.Primary}"
         FontSize="16"
         CanResize="False"   
-        RequestedThemeVariant="Light"
         xmlns:views="using:WorkflowManager.Views">
 
     <!-- ROOT LAYOUT -->
