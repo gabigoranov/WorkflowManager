@@ -1,0 +1,65 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:WorkflowManager.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WorkflowManager.Views.Partial.ProcessList"
+             x:DataType="viewModels:ProcessEditorViewModel">
+    
+    <StackPanel Spacing="{DynamicResource Spacing.Xs}">
+        <!-- Title -->
+        <TextBlock Text="Current Processes Queue" Classes="HeaderMd PrimaryText" />
+        
+        <ItemsControl ItemsSource="{Binding AddedProcesses}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- Card template -->
+                    <Border Background="{DynamicResource Color.Card}"
+                            Margin="{DynamicResource Spacing.Bottom.Xs}"
+                            Padding="{DynamicResource Spacing.All.Md}"
+                            CornerRadius="{DynamicResource Border.Radius.Sm}"
+                            BorderBrush="{DynamicResource Color.Border}"
+                            BorderThickness="{DynamicResource Border.Thin.All}">
+                        <Grid ColumnDefinitions="Auto, *, Auto">
+                            <!-- Process icon-->
+                            <PathIcon Width="20" Height="20"
+                                      Margin="{DynamicResource Spacing.Right.Md}"
+                                      Data="{Binding Icon}"
+                                      IsVisible="{Binding Icon, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+
+                            <!-- Common process window info -->
+                            <StackPanel Grid.Column="1" Spacing="2">
+                                <TextBlock Text="{Binding Title}" Classes="PrimaryText" FontWeight="SemiBold" />
+                                <StackPanel Orientation="Horizontal" Spacing="{DynamicResource Spacing.Md}">
+                                    <TextBlock Text="{Binding Monitor, StringFormat='Mon: {0}'}"
+                                               Classes="SecondaryText" FontSize="11" />
+                                    <TextBlock Text="Fullscreen" Classes="OnAccentText"
+                                               Background="{DynamicResource Color.Primary}" Padding="4,0" FontSize="10"
+                                               IsVisible="{Binding IsFullscreen}" />
+                                    <TextBlock Text="{Binding Size}" Classes="SecondaryText" FontSize="11" />
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <!-- Process actions -->
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="{DynamicResource Spacing.Xs}"
+                                        VerticalAlignment="Center">
+                                <Button x:CompileBindings="False"
+                                        Command="{Binding $parent[UserControl].DataContext.StartProcessEditCommand}"
+                                        CommandParameter="{Binding .}">
+                                    <PathIcon Width="14" Height="14" Data="{DynamicResource DocumentEditRegular}" />
+                                </Button>
+                                
+                                <Button x:CompileBindings="False"
+                                        Command="{Binding $parent[UserControl].DataContext.DeleteProcessCommand}"
+                                        CommandParameter="{Binding .}">
+                                    <PathIcon Width="14" Height="14" Data="{DynamicResource DeleteRegular}" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

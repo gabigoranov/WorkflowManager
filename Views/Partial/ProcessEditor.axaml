@@ -1,0 +1,108 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:partial="clr-namespace:WorkflowManager.Views.Partial"
+             xmlns:binding="clr-namespace:WorkflowManager.ViewModels.Binding"
+             xmlns:viewModels="clr-namespace:WorkflowManager.ViewModels"
+             xmlns:converters="clr-namespace:WorkflowManager.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WorkflowManager.Views.Partial.ProcessEditor"
+             x:DataType="viewModels:ProcessEditorViewModel">
+    <UserControl.Resources>
+        <converters:StringSelectConverter x:Key="StringSelectConverter" />
+    </UserControl.Resources>
+    
+    <!-- ProcessEditor container -->
+    <StackPanel Spacing="{DynamicResource Spacing.Xs}">
+        <!-- Title -->
+        <TextBlock
+            Text="{Binding IsEditing, Converter={StaticResource StringSelectConverter}, ConverterParameter='Modify Process|Add New Process'}"
+            Classes="ParagraphMd"
+            Foreground="{DynamicResource Color.Primary}" />
+        
+        <Border Padding="{DynamicResource Spacing.All.Lg}"
+                BorderBrush="{DynamicResource Color.Border}"
+                BorderThickness="{DynamicResource Border.Thin.All}"
+                CornerRadius="{DynamicResource Border.Radius.Sm}"
+                Background="{DynamicResource Color.Card}">
+            <StackPanel Spacing="{DynamicResource Spacing.Sm}">
+                
+                <!-- Inputs for process name and icon -->
+                <Grid ColumnDefinitions="*, Auto">
+                    <TextBox Text="{Binding BindingModel.Title, UpdateSourceTrigger=LostFocus}"
+                             Watermark="Process Name (e.g. Sync Files)" />
+                    <TextBox Grid.Column="1" Width="100"
+                             Margin="{DynamicResource Spacing.Left.Sm}"
+                             Text="{Binding BindingModel.Icon, UpdateSourceTrigger=LostFocus}"
+                             Watermark="Icon" />
+                </Grid>
+                
+                <!-- Dropdown menu for process type -->
+                <StackPanel Spacing="2">
+                    <TextBlock Text="Process Type" Classes="SecondaryText" FontSize="12" />
+                    <ComboBox ItemsSource="{Binding ProcessTypes}"
+                              SelectedItem="{Binding BindingModel.Discriminator}"
+                              HorizontalAlignment="Stretch">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Dynamic form based on the selected process type -->
+                <StackPanel Spacing="{DynamicResource Spacing.Sm}">
+                    <ContentControl Content="{Binding BindingModel}">
+                        <ContentControl.DataTemplates>
+                            <DataTemplate DataType="binding:CommandProcessBindingModel">
+                                <partial:CommandProcessForm />
+                            </DataTemplate>
+                        </ContentControl.DataTemplates>
+                    </ContentControl>
+                </StackPanel>
+
+                <!-- General window displayment settings -->
+                <TextBlock Text="Display Settings" Classes="SecondaryText" FontWeight="Bold"
+                           Margin="{DynamicResource Spacing.Top.Xs}" />
+
+                <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto"
+                      Margin="{DynamicResource Spacing.Vertical.Xs}">
+                    <CheckBox Grid.Row="0" Grid.Column="0"
+                              IsChecked="{Binding BindingModel.IsFullscreen}"
+                              Content="Fullscreen" />
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="{DynamicResource Spacing.Horizontal.Sm}">
+                        <TextBlock Text="Monitor" FontSize="10" Classes="SecondaryText" />
+                        <TextBox
+                            Text="{Binding BindingModel.Monitor, UpdateSourceTrigger=LostFocus}"
+                            Watermark="ID" FontSize="14" Padding="10,5" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="2">
+                        <TextBlock Text="Size" FontSize="10" Classes="SecondaryText" />
+                        <TextBox
+                            Text="{Binding BindingModel.Size, UpdateSourceTrigger=LostFocus}"
+                            Watermark="WxH" FontSize="14" Padding="10,5" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                Margin="{DynamicResource Spacing.Top.Sm}">
+                        <TextBlock Text="Window Position" FontSize="10" Classes="SecondaryText" />
+                        <TextBox
+                            Text="{Binding BindingModel.Position, UpdateSourceTrigger=LostFocus}"
+                            Watermark="e.g. 100,100" FontSize="14" Padding="10,5" />
+                    </StackPanel>
+                </Grid>
+
+                <!-- Submit button -->
+                <Button
+                    Content="{Binding IsEditing, Converter={StaticResource StringSelectConverter}, ConverterParameter='Save Changes|Add Process'}"
+                    Classes="ActionButton"
+                    Command="{Binding AddOrEditProcessCommand}"
+                    HorizontalAlignment="Right" HotKey="Enter" />
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>
