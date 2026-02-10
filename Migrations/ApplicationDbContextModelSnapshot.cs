@@ -100,6 +100,17 @@ namespace WorkflowManager.Migrations
                     b.HasDiscriminator().HasValue(1);
                 });
 
+            modelBuilder.Entity("WorkflowManager.Models.WebsiteProcess", b =>
+                {
+                    b.HasBaseType("WorkflowManager.Models.Common.Process");
+
+                    b.Property<string>("URL")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue(2);
+                });
+
             modelBuilder.Entity("WorkflowManager.Models.Common.Process", b =>
                 {
                     b.HasOne("WorkflowManager.Models.Workflow", "Workflow")

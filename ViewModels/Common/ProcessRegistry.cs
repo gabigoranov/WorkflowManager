@@ -11,7 +11,8 @@ public static class ProcessRegistry
 {
     public static readonly Dictionary<ProcessType, ProcessBindingModel> ProcessOptions = new  Dictionary<ProcessType, ProcessBindingModel>()
     {
-        { ProcessType.CommandProcess, new CommandProcessBindingModel()}
+        { ProcessType.CommandProcess, new CommandProcessBindingModel()},
+        { ProcessType.WebsiteProcess, new WebsiteProcessBindingModel()}
     };    
 }
 

@@ -2,5 +2,6 @@
 
 public enum ProcessType
 {
-    CommandProcess = 1
+    CommandProcess = 1,
+    WebsiteProcess = 2
 }

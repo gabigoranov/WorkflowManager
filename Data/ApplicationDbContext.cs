@@ -5,8 +5,12 @@ using Process = WorkflowManager.Models.Common.Process;
 
 namespace WorkflowManager.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
+public class ApplicationDbContext : DbContext
 {
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    {
+    }
+    
     public DbSet<Workflow> Workflows { get; set; }
     public DbSet<Process> Processes { get; set; }
 
@@ -17,9 +21,11 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         // Configure the inheritance hierarchy for processes
         modelBuilder.Entity<Process>().ToTable("Processes");
         modelBuilder.Entity<CommandProcess>();
+        modelBuilder.Entity<WebsiteProcess>();
 
         modelBuilder.Entity<Process>()
             .HasDiscriminator<ProcessType>("Discriminator")
-            .HasValue<CommandProcess>(ProcessType.CommandProcess); 
+            .HasValue<CommandProcess>(ProcessType.CommandProcess)
+            .HasValue<WebsiteProcess>(ProcessType.WebsiteProcess); 
     }
 }

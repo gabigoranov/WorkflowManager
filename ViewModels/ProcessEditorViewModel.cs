@@ -49,8 +49,12 @@ public partial class ProcessEditorViewModel : ObservableValidator
     public ProcessEditorViewModel(IMapper mapper)
     {
         _mapper = mapper;
-        
-        // Subscribe the view to know when the BindingModel.Discriminator is changed in order to cast it to a new type
+        SubscribeToDiscriminatorChange();
+    }
+
+    // Subscribe the view to know when the BindingModel.Discriminator is changed in order to cast it to a new type
+    private void SubscribeToDiscriminatorChange()
+    {
         this.WhenAnyValue(x => x.BindingModel.Discriminator)
             .Subscribe(HandleDiscriminatorChange);
     }
@@ -67,6 +71,7 @@ public partial class ProcessEditorViewModel : ObservableValidator
             return;
         
         BindingModel = (ProcessBindingModel)_mapper.Map(BindingModel,  BindingModel.GetType(), targetType);
+        SubscribeToDiscriminatorChange();
     }
 
     /// <summary>
@@ -128,12 +133,14 @@ public partial class ProcessEditorViewModel : ObservableValidator
         var processToEdit = (ProcessBindingModel)_mapper.Map(toEdit, toEdit.GetType(), toEdit.GetType());
 
         BindingModel = processToEdit;
+        SubscribeToDiscriminatorChange();
     }
     
     public void Reset()
     {
         // Don't create a base model; create the concrete default directly
         BindingModel = new CommandProcessBindingModel(); 
+        SubscribeToDiscriminatorChange();
     
         IsEditing = false;
         _editingIndex = null;

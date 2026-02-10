@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using WorkflowManager.Models.Common;
 using Process = WorkflowManager.Models.Common.Process;
 
 namespace WorkflowManager.Models;
@@ -11,6 +12,11 @@ namespace WorkflowManager.Models;
 /// </summary>
 public class CommandProcess : Process
 {
+    public CommandProcess()
+    {
+        Discriminator = ProcessType.CommandProcess;
+    }
+    
     [Required]
     [StringLength(255)]
     public string Directory { get; set; }

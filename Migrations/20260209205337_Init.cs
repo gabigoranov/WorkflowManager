@@ -40,7 +40,8 @@ namespace WorkflowManager.Migrations
                     Size = table.Column<string>(type: "TEXT", nullable: false),
                     Discriminator = table.Column<int>(type: "INTEGER", nullable: false),
                     Directory = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true),
-                    Command = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true)
+                    Command = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true),
+                    URL = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

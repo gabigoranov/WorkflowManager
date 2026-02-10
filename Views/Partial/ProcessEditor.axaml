@@ -11,6 +11,7 @@
              x:DataType="viewModels:ProcessEditorViewModel">
     <UserControl.Resources>
         <converters:StringSelectConverter x:Key="StringSelectConverter" />
+        <converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
     </UserControl.Resources>
     
     <!-- ProcessEditor container -->
@@ -59,11 +60,15 @@
                             <DataTemplate DataType="binding:CommandProcessBindingModel">
                                 <partial:CommandProcessForm />
                             </DataTemplate>
+                            
+                            <DataTemplate DataType="binding:WebsiteProcessBindingModel">
+                                <partial:WebsiteProcessForm />
+                            </DataTemplate>
                         </ContentControl.DataTemplates>
                     </ContentControl>
                 </StackPanel>
 
-                <!-- General window displayment settings -->
+                <!-- General window display settings -->
                 <TextBlock Text="Display Settings" Classes="SecondaryText" FontWeight="Bold"
                            Margin="{DynamicResource Spacing.Top.Xs}" />
 

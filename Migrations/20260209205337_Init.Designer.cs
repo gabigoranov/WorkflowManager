@@ -11,7 +11,7 @@ using WorkflowManager.Data;
 namespace WorkflowManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260207095301_Init")]
+    [Migration("20260209205337_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -101,6 +101,17 @@ namespace WorkflowManager.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasDiscriminator().HasValue(1);
+                });
+
+            modelBuilder.Entity("WorkflowManager.Models.WebsiteProcess", b =>
+                {
+                    b.HasBaseType("WorkflowManager.Models.Common.Process");
+
+                    b.Property<string>("URL")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue(2);
                 });
 
             modelBuilder.Entity("WorkflowManager.Models.Common.Process", b =>

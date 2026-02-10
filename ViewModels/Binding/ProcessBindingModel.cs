@@ -12,6 +12,9 @@ namespace WorkflowManager.ViewModels.Binding;
 /// </summary>
 public partial class ProcessBindingModel : ObservableValidator
 {
+    // A simple reference back to the parent's swap logic
+    public Action<ProcessType>? OnTypeChanged { get; set; }
+    
     [ObservableProperty]
     [Required(ErrorMessage = "A title is required")]
     [MaxLength(30, ErrorMessage = "Title cannot exceed 30 characters")]
@@ -40,5 +43,12 @@ public partial class ProcessBindingModel : ObservableValidator
     {
         ValidateAllProperties();
         return !HasErrors;
+    }
+    
+    // This partial method is called by the Toolkit whenever the _discriminator changes
+    partial void OnDiscriminatorChanged(ProcessType value)
+    {
+        // Reach out to the parent and tell it to swap the model NOW
+        OnTypeChanged?.Invoke(value);
     }
 }

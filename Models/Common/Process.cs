@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace WorkflowManager.Models.Common;
 

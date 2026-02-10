@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using WorkflowManager.Models.Common;
 using WorkflowManager.Services.Dialog;
 
 namespace WorkflowManager.ViewModels.Binding;
@@ -11,6 +12,11 @@ namespace WorkflowManager.ViewModels.Binding;
 /// </summary>
 public partial class CommandProcessBindingModel : ProcessBindingModel
 {
+    public CommandProcessBindingModel()
+    {
+        Discriminator = ProcessType.CommandProcess;
+    }
+    
     [ObservableProperty]
     [Required(ErrorMessage = "A directory is required")]
     private string _directory = string.Empty;
