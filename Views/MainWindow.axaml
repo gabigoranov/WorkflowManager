@@ -15,7 +15,6 @@
         FontSize="16"
         CanResize="False"   
         xmlns:views="using:WorkflowManager.Views">
-
     <!-- ROOT LAYOUT -->
     <Grid ColumnDefinitions="300,*">
 

@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace WorkflowManager.Models.Common;
@@ -37,7 +39,4 @@ public abstract class Process
     public ProcessType Discriminator { get; set; }
 
     public abstract Task Execute();
-
-
-
 }

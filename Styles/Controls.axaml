@@ -1,5 +1,6 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <Style Selector="TextBox">
         <Setter Property="Background" Value="{DynamicResource Color.Card}"/>
         <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
@@ -79,5 +80,43 @@
     <Style Selector="CheckBox:pressed /template/ ContentPresenter">
         <Setter Property="Foreground"
                 Value="{DynamicResource Color.Text.Primary}" />
+    </Style>
+    
+    <!-- ComboBox -->
+    <Style Selector="ComboBox">
+        <Setter Property="Background" Value="{DynamicResource Color.Card}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Border}"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource Border.Thin.All}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource Border.Radius.Sm}"/>
+        <Setter Property="Padding" Value="18, 12"/> <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="ComboBox:pointerover /template/ Border#LayerRoot">
+        <Setter Property="Background" Value="{DynamicResource Color.Card}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Color.Primary}"/>
+    </Style>
+
+    <Style Selector="ComboBox:pressed /template/ Border#LayerRoot">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Subtle}"/>
+    </Style>
+
+    <Style Selector="ComboBoxItem">
+        <Setter Property="Padding" Value="18, 12"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style Selector="ComboBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource Color.Primary.Subtle}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.OnAccent}"/>
+    </Style>
+
+    <Style Selector="ComboBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource Color.Primary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.OnAccent}"/>
     </Style>
 </Styles>
