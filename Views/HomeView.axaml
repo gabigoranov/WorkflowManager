@@ -19,11 +19,6 @@
             <Setter Property="StrokeBrush" Value="{DynamicResource Color.Text.Secondary}"/>
         </Style>
 
-        <Style Selector="Button.CreateButton">
-            <Setter Property="CornerRadius" Value="{DynamicResource Border.Radius.Sm}"/>
-            <Setter Property="Padding" Value="{DynamicResource Spacing.Combo.Lg.Sm}"/>
-        </Style>
-
         <Style Selector="la|Lucide.AddIcon">
             <Setter Property="StrokeBrush" Value="{DynamicResource Color.Text.OnAccent}"/>
         </Style>
@@ -46,13 +41,13 @@
                 </Grid>
 
                 <!-- New workflow button -->
-                <Button Grid.Column="1" 
-                        Classes="ActionButton CreateButton"
+                <Button Grid.Column="1"
+                        Classes="ActionButton Elevated"
                         Command="{Binding GoCreateWorkflowCommand}">
                     <StackPanel Orientation="Horizontal" Spacing="{DynamicResource Spacing.Md}">
                         <la:Lucide Icon="Plus" Classes="AddIcon" />
 
-                        <TextBlock Text="New Workflow" FontWeight="Bold" FontSize="18"/>
+                        <TextBlock Text="New Workflow" FontWeight="Bold" FontSize="{DynamicResource FontSize.Md}"/>
                     </StackPanel>
                 </Button>
             </Grid>

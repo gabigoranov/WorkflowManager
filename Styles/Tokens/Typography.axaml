@@ -1,4 +1,48 @@
-﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-</Styles>
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Font Families -->
+        <FontFamily x:Key="FontFamily.Default">avares://WorkflowManager/Assets#Inter</FontFamily>
+        <FontFamily x:Key="FontFamily.Monospace">avares://WorkflowManager/Assets#FiraCode</FontFamily>
+        
+        <!-- Base Font Size -->
+        <x:Double x:Key="FontSize.Base">18</x:Double>
+        
+        <!-- Font Sizes -->
+        <x:Double x:Key="FontSize.2Xs">12</x:Double>
+        <x:Double x:Key="FontSize.Xs">14</x:Double>
+        <x:Double x:Key="FontSize.Sm">16</x:Double>
+        <x:Double x:Key="FontSize.Md">18</x:Double>
+        <x:Double x:Key="FontSize.Lg">20</x:Double>
+        <x:Double x:Key="FontSize.Xl">22</x:Double>
+        <x:Double x:Key="FontSize.2Xl">24</x:Double>
+        <x:Double x:Key="FontSize.3Xl">26</x:Double>
+        
+        <!-- Font Weights -->
+        <x:Int32 x:Key="FontWeight.Normal">400</x:Int32>
+        <x:Int32 x:Key="FontWeight.Medium">500</x:Int32>
+        <x:Int32 x:Key="FontWeight.SemiBold">600</x:Int32>
+        <x:Int32 x:Key="FontWeight.Bold">700</x:Int32>
+        <x:Int32 x:Key="FontWeight.ExtraBold">800</x:Int32>
+        
+        <!-- Line Heights -->
+        <x:Double x:Key="LineHeight.Tight">1.25</x:Double>
+        <x:Double x:Key="LineHeight.Snug">1.375</x:Double>
+        <x:Double x:Key="LineHeight.Normal">1.5</x:Double>
+        <x:Double x:Key="LineHeight.Relaxed">1.625</x:Double>
+        
+        <!-- Letter Spacing -->
+        <x:Double x:Key="LetterSpacing.Tighter">-0.05</x:Double>
+        <x:Double x:Key="LetterSpacing.Tight">-0.025</x:Double>
+        <x:Double x:Key="LetterSpacing.Normal">0</x:Double>
+        <x:Double x:Key="LetterSpacing.Wide">0.025</x:Double>
+        <x:Double x:Key="LetterSpacing.Wider">0.05</x:Double>
+        <x:Double x:Key="LetterSpacing.Widest">0.1</x:Double>
+        
+        <!-- Heading Sizes -->
+        <x:Double x:Key="Heading.Size.H1">32</x:Double>
+        <x:Double x:Key="Heading.Size.H2">28</x:Double>
+        <x:Double x:Key="Heading.Size.H3">22</x:Double>
+        <x:Double x:Key="Heading.Size.H4">20</x:Double>
+        <x:Double x:Key="Heading.Size.H5">18</x:Double>
+        <x:Double x:Key="Heading.Size.H6">16</x:Double>
+        </ResourceDictionary>

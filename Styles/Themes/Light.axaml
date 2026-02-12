@@ -36,5 +36,10 @@
     
     <SolidColorBrush x:Key="Color.Primary.Subtle"
                      Color="{DynamicResource Color.Brand.500}"/>
+    
+    <!-- Shadows -->
+    <BoxShadows x:Key="Shadow.Low">0 4 12 1 #30000000</BoxShadows>
+
+    <BoxShadows x:Key="Shadow.Medium">0 8 24 2 #35000000</BoxShadows>
 
 </ResourceDictionary>

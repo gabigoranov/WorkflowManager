@@ -8,7 +8,11 @@
         <Setter Property="BorderThickness" Value="{DynamicResource Border.Thin.All}"/>
         <Setter Property="Padding" Value="18, 12"/>
         <Setter Property="CornerRadius" Value="{DynamicResource Border.Radius.Sm}"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize.Md}"/>
+    </Style>
+    
+    <Style Selector="TextBox:pointerover">
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
     </Style>
 
     <!-- Watermark styling -->
@@ -18,9 +22,17 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
     
+    <Style Selector="TextBox:watermark:pointerover">
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
     <Style Selector="Button.ActionButton">
         <Setter Property="Background" Value="{DynamicResource Color.Primary}"/>
         <Setter Property="Foreground" Value="{DynamicResource Color.Text.OnAccent}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource Border.Radius.Sm}"/>
+        <Setter Property="Padding" Value="{DynamicResource Spacing.Combo.Lg.Sm}"/>
     </Style>
     
     <Style Selector="Button.ActionButton:pointerover /template/ ContentPresenter">
@@ -50,18 +62,18 @@
     </Style>
     
     <!-- Text sizing-->
-    
+
     <Style Selector="TextBlock.HeaderLg">
-        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize.2Xl}"></Setter>
     </Style>
-    
+
     <Style Selector="TextBlock.HeaderMd">
-        <Setter Property="FontSize" Value="22"></Setter>
+        <Setter Property="FontSize" Value="{DynamicResource Heading.Size.H3}"></Setter>
         <Setter Property="FontWeight" Value="Bold" />
     </Style>
 
     <Style Selector="TextBlock.ParagraphMd">
-        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize.Md}"></Setter>
         <Setter Property="FontWeight" Value="SemiBold"></Setter>
     </Style>
     
@@ -89,7 +101,8 @@
         <Setter Property="BorderBrush" Value="{DynamicResource Color.Border}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource Border.Thin.All}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource Border.Radius.Sm}"/>
-        <Setter Property="Padding" Value="18, 12"/> <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Padding" Value="18, 12"/> 
+        <Setter Property="FontSize" Value="{DynamicResource FontSize.Md}"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
@@ -105,7 +118,7 @@
 
     <Style Selector="ComboBoxItem">
         <Setter Property="Padding" Value="18, 12"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize.Sm}"/>
         <Setter Property="Foreground" Value="{DynamicResource Color.Text.Primary}"/>
         <Setter Property="Background" Value="Transparent"/>
     </Style>

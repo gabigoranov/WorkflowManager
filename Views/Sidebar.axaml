@@ -12,7 +12,7 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}" />
             <Setter Property="CornerRadius" Value="{DynamicResource Border.Radius.Md}"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="{DynamicResource FontSize.Md}"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Padding" Value="{DynamicResource Spacing.All.Lg}"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -86,13 +86,13 @@
 
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="FlowState"
-                               FontSize="20"
+                               FontSize="{DynamicResource FontSize.Lg}"
                                FontWeight="Bold"
                                Foreground="{DynamicResource Color.Text.Primary}"/>
-                    
+
                     <TextBlock Text="LOCAL PRO"
-                               FontSize="12"
-                               LetterSpacing="2"
+                               FontSize="{DynamicResource FontSize.2Xs}"
+                               LetterSpacing="{DynamicResource LetterSpacing.Widest}"
                                FontWeight="SemiBold"
                                Foreground="{DynamicResource Color.Text.Secondary}"/>
                 </StackPanel>
@@ -105,10 +105,10 @@
                 <Button Classes="SidebarItem"
                         Classes.SelectedSidebarItem="{Binding IsHomeSelected}"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding GoHomeCommand}"> 
+                        Command="{Binding GoHomeCommand}">
                     <StackPanel Orientation="Horizontal" Spacing="{DynamicResource Spacing.Xl}">
                         <la:Lucide Icon="House" Classes="SidebarItemIcon" />
-                        
+
                         <TextBlock Text="Home"
                                    FontWeight="Bold"/>
                     </StackPanel>
@@ -119,7 +119,7 @@
                         HorizontalAlignment="Stretch">
                     <StackPanel Orientation="Horizontal" Spacing="{DynamicResource Spacing.Xl}">
                         <la:Lucide Icon="Grid2X2" Classes="SidebarItemIcon" />
-                        
+
                         <TextBlock Text="Library"/>
                     </StackPanel>
                 </Button>
@@ -128,7 +128,7 @@
                         HorizontalAlignment="Stretch">
                     <StackPanel Orientation="Horizontal" Spacing="{DynamicResource Spacing.Xl}">
                         <la:Lucide Icon="History" Classes="SidebarItemIcon" />
-                        
+
                         <TextBlock Text="History"/>
                     </StackPanel>
                 </Button>

@@ -12,8 +12,8 @@
         Height="800"
         Background="{DynamicResource Color.Background}"
         Foreground="{DynamicResource Color.Text.Primary}"
-        FontSize="16"
-        CanResize="False"   
+        FontSize="{DynamicResource FontSize.Sm}"
+        CanResize="False"
         xmlns:views="using:WorkflowManager.Views">
     <!-- ROOT LAYOUT -->
     <Grid ColumnDefinitions="300,*">

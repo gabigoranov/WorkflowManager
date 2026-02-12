@@ -26,7 +26,7 @@
                         CornerRadius="{DynamicResource Border.Radius.Sm}"
                         Background="{DynamicResource Color.Card}">
                     <StackPanel Spacing="{DynamicResource Spacing.Sm}">
-                        <TextBlock Text="Workflow Title" Classes="SecondaryText" FontSize="12"/>
+                        <TextBlock Text="Workflow Title" Classes="SecondaryText" FontSize="{DynamicResource FontSize.2Xs}"/>
                         <TextBox Text="{Binding Title, UpdateSourceTrigger=LostFocus}" Watermark="e.g. Daily Data Backup" />
                     </StackPanel>
                 </Border>
@@ -40,7 +40,7 @@
 
             <!-- Submit button -->
             <Button Content="{Binding SubmitButtonText}" 
-                    Classes="ActionButton"
+                    Classes="ActionButton Elevated"
                     Command="{Binding SaveOrEditWorkflowCommand}" 
                     Height="45" 
                     HorizontalAlignment="Stretch" 

@@ -11,7 +11,6 @@
              x:DataType="viewModels:ProcessEditorViewModel">
     <UserControl.Resources>
         <converters:StringSelectConverter x:Key="StringSelectConverter" />
-        <converters:EnumToBoolConverter x:Key="EnumToBoolConverter" />
     </UserControl.Resources>
     
     <!-- ProcessEditor container -->
@@ -41,7 +40,7 @@
                 
                 <!-- Dropdown menu for process type -->
                 <StackPanel Spacing="2">
-                    <TextBlock Text="Process Type" Classes="SecondaryText" FontSize="12" />
+                    <TextBlock Text="Process Type" Classes="SecondaryText" FontSize="{DynamicResource FontSize.2Xs}" />
                     <ComboBox ItemsSource="{Binding ProcessTypes}"
                               SelectedItem="{Binding BindingModel.Discriminator}"
                               HorizontalAlignment="Stretch">
@@ -82,29 +81,29 @@
                         <TextBlock Text="Monitor" FontSize="10" Classes="SecondaryText" />
                         <TextBox
                             Text="{Binding BindingModel.Monitor, UpdateSourceTrigger=LostFocus}"
-                            Watermark="ID" FontSize="14" Padding="10,5" />
+                            Watermark="ID" FontSize="{DynamicResource Spacing.Xs}" Padding="10,5" />
                     </StackPanel>
 
                     <StackPanel Grid.Row="0" Grid.Column="2">
-                        <TextBlock Text="Size" FontSize="10" Classes="SecondaryText" />
+                        <TextBlock Text="Size" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText" />
                         <TextBox
                             Text="{Binding BindingModel.Size, UpdateSourceTrigger=LostFocus}"
-                            Watermark="WxH" FontSize="14" Padding="10,5" />
+                            Watermark="WxH" FontSize="{DynamicResource FontSize.Xs}" Padding="10,5" />
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
                                 Margin="{DynamicResource Spacing.Top.Sm}">
-                        <TextBlock Text="Window Position" FontSize="10" Classes="SecondaryText" />
+                        <TextBlock Text="Window Position" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText" />
                         <TextBox
                             Text="{Binding BindingModel.Position, UpdateSourceTrigger=LostFocus}"
-                            Watermark="e.g. 100,100" FontSize="14" Padding="10,5" />
+                            Watermark="e.g. 100,100" FontSize="{DynamicResource FontSize.Xs}" Padding="10,5" />
                     </StackPanel>
                 </Grid>
 
                 <!-- Submit button -->
                 <Button
                     Content="{Binding IsEditing, Converter={StaticResource StringSelectConverter}, ConverterParameter='Save Changes|Add Process'}"
-                    Classes="ActionButton"
+                    Classes="ActionButton Elevated"
                     Command="{Binding AddOrEditProcessCommand}"
                     HorizontalAlignment="Right" HotKey="Enter" />
             </StackPanel>

@@ -10,9 +10,9 @@
         <TextBlock Text="Website Configuration" Classes="SecondaryText" FontWeight="Bold"/>
         
         <StackPanel Spacing="2">
-            <TextBlock Text="Website / URL" FontSize="12" Classes="SecondaryText"/>
-            <TextBox Text="{Binding URL, UpdateSourceTrigger=LostFocus}" 
-                     Watermark="e.g. https://youtube.com" 
+            <TextBlock Text="Website / URL" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText"/>
+            <TextBox Text="{Binding URL, UpdateSourceTrigger=LostFocus}"
+                     Watermark="e.g. https://youtube.com"
                      AcceptsReturn="True" />
         </StackPanel>
     </StackPanel>

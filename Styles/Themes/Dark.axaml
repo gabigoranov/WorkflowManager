@@ -36,5 +36,9 @@
     
     <SolidColorBrush x:Key="Color.Primary.Subtle"
                      Color="{DynamicResource Color.Brand.600}"/>
+    
+    <!-- Shadows -->
+    <BoxShadows x:Key="Shadow.Low">0 0 0 0 Transparent</BoxShadows>
+    <BoxShadows x:Key="Shadow.Medium">0 0 0 0 Transparent</BoxShadows>
 
 </ResourceDictionary>

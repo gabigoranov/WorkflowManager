@@ -7,16 +7,16 @@
         <TextBlock Text="Command Configuration" Classes="SecondaryText" FontWeight="Bold"/>
         
         <StackPanel Spacing="2">
-            <TextBlock Text="Working Directory" FontSize="12" Classes="SecondaryText"/>
+            <TextBlock Text="Working Directory" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText"/>
             <Grid ColumnDefinitions="*, Auto">
                 <TextBox Text="{Binding Directory, UpdateSourceTrigger=LostFocus}" Watermark="C:\Path\To\Execute" />
             </Grid>
         </StackPanel>
 
         <StackPanel Spacing="2">
-            <TextBlock Text="Command / Arguments" FontSize="12" Classes="SecondaryText"/>
-            <TextBox Text="{Binding Command, UpdateSourceTrigger=LostFocus}" 
-                     Watermark="e.g. dotnet run --project MyProj.csproj" 
+            <TextBlock Text="Command / Arguments" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText"/>
+            <TextBox Text="{Binding Command, UpdateSourceTrigger=LostFocus}"
+                     Watermark="e.g. dotnet run --project MyProj.csproj"
                      AcceptsReturn="True" />
         </StackPanel>
     </StackPanel>
