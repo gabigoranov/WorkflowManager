@@ -1,5 +1,6 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:la="clr-namespace:LucideAvalonia;assembly=LucideAvalonia">
 
     <Style Selector="TextBox">
         <Setter Property="Background" Value="{DynamicResource Color.Card}"/>
@@ -31,6 +32,13 @@
     <Style Selector="Button.ActionButton">
         <Setter Property="Background" Value="{DynamicResource Color.Primary}"/>
         <Setter Property="Foreground" Value="{DynamicResource Color.Text.OnAccent}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource Border.Radius.Sm}"/>
+        <Setter Property="Padding" Value="{DynamicResource Spacing.Combo.Lg.Sm}"/>
+    </Style>
+    
+    <Style Selector="Button.SecondaryButton">
+        <Setter Property="Background" Value="{DynamicResource Color.Background.Subtle}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Color.Text.Secondary}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource Border.Radius.Sm}"/>
         <Setter Property="Padding" Value="{DynamicResource Spacing.Combo.Lg.Sm}"/>
     </Style>
@@ -131,5 +139,14 @@
     <Style Selector="ComboBoxItem:selected /template/ ContentPresenter">
         <Setter Property="Background" Value="{DynamicResource Color.Primary}"/>
         <Setter Property="Foreground" Value="{DynamicResource Color.Text.OnAccent}"/>
+    </Style>
+    
+    <!-- Lucide -->
+    <Style Selector="la|Lucide.OnAccentIcon">
+        <Setter Property="StrokeBrush" Value="{DynamicResource Color.Text.OnAccent}"/>
+    </Style>
+    
+    <Style Selector="la|Lucide.OnSubtleIcon">
+        <Setter Property="StrokeBrush" Value="{DynamicResource Color.Text.Secondary}"/>
     </Style>
 </Styles>

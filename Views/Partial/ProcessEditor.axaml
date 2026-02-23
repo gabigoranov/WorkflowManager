@@ -63,6 +63,10 @@
                             <DataTemplate DataType="binding:WebsiteProcessBindingModel">
                                 <partial:WebsiteProcessForm />
                             </DataTemplate>
+                            
+                            <DataTemplate DataType="binding:AppProcessBindingModel">
+                                <partial:AppProcessForm />
+                            </DataTemplate>
                         </ContentControl.DataTemplates>
                     </ContentControl>
                 </StackPanel>

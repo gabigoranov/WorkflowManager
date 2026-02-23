@@ -3,5 +3,6 @@
 public enum ProcessType
 {
     CommandProcess = 1,
-    WebsiteProcess = 2
+    WebsiteProcess = 2,
+    AppProcess = 3,
 }

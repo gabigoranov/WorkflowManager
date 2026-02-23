@@ -14,6 +14,8 @@ using WorkflowManager.Services.Theme;
 using WorkflowManager.Services.Workflow;
 using WorkflowManager.Services.WorkflowState;
 using WorkflowManager.ViewModels;
+using WorkflowManager.ViewModels.Binding;
+using WorkflowManager.ViewModels.Common;
 using WorkflowManager.ViewModels.Partial;
 
 namespace WorkflowManager.Services.Common;
@@ -56,6 +58,7 @@ public static class ServiceCollectionExtensions
         collection.AddSingleton<MainWindowViewModel>();
         collection.AddSingleton<SidebarViewModel>();
         collection.AddSingleton<SettingsViewModel>();
+        collection.AddSingleton<ProcessRegistry>();
         collection.AddSingleton<IThemeService, ThemeService>();
         collection.AddSingleton<IWorkflowStateService, WorkflowStateService>();
         collection.AddSingleton<IStartupService>(sp =>
@@ -73,6 +76,10 @@ public static class ServiceCollectionExtensions
         
         collection.AddTransient<WorkflowEditorViewModel>();
         collection.AddTransient<ProcessEditorViewModel>();
+        
+        collection.AddTransient<CommandProcessBindingModel>();
+        collection.AddTransient<WebsiteProcessBindingModel>();
+        collection.AddTransient<AppProcessBindingModel>();
         
         collection.AddTransient<IProcessService, ProcessService>();
         collection.AddTransient<IWorkflowService, WorkflowService>();

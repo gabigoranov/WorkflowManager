@@ -1,0 +1,48 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:WorkflowManager.ViewModels.Binding"
+             xmlns:lucideAvalonia="clr-namespace:LucideAvalonia;assembly=LucideAvalonia"
+             xmlns:viewModels="clr-namespace:WorkflowManager.ViewModels"
+             x:Class="WorkflowManager.Views.Partial.AppProcessForm"
+             x:DataType="vm:AppProcessBindingModel">
+    <StackPanel Spacing="{DynamicResource Spacing.Sm}">
+        <TextBlock Text="Command Configuration" Classes="SecondaryText" FontWeight="Bold"/>
+        
+        <!-- Form fields for app itself -->
+        <StackPanel Spacing="2">
+            <TextBlock Text="App Directory" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText"/>
+            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="{DynamicResource Spacing.Xl}">
+                <TextBox Text="{Binding Directory, UpdateSourceTrigger=LostFocus}" Watermark="C:\Path\To\App" />
+                <Button Grid.Column="1"
+                        Classes="SecondaryButton" 
+                        Command="{Binding $parent[UserControl;1].((viewModels:ProcessEditorViewModel)DataContext).SelectAppCommand}"> <!-- Uses the parents command in some weird way -->
+                    <StackPanel Orientation="Horizontal" Spacing="{DynamicResource Spacing.Md}">
+                        <lucideAvalonia:Lucide Icon="SquareActivity" Classes="OnSubtleIcon" />
+                        <TextBlock Text="Select App" FontWeight="Bold" FontSize="{DynamicResource FontSize.Md}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </StackPanel>
+
+        <!-- Form fields for optional arguments -->
+        <StackPanel Spacing="2">
+            <TextBlock Text="Document or file to open in app" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText"/>
+            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="{DynamicResource Spacing.Xl}">
+                <TextBox Text="{Binding ArgumentDirectory, UpdateSourceTrigger=LostFocus}"
+                         Watermark="e.g. C:\Apps\Blender.exe"
+                         AcceptsReturn="True" />
+                <Button Grid.Column="1"
+                        Classes="SecondaryButton"
+                        Command="{Binding $parent[UserControl;1].((viewModels:ProcessEditorViewModel)DataContext).SelectFileCommand}"> <!-- Uses the parents command in some weird way -->
+                    <StackPanel Orientation="Horizontal" Spacing="{DynamicResource Spacing.Md}">
+                        <lucideAvalonia:Lucide Icon="FilePlus2" Classes="OnSubtleIcon" />
+                        <TextBlock Text="Select File" FontWeight="Bold" FontSize="{DynamicResource FontSize.Md}"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

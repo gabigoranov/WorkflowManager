@@ -22,10 +22,12 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Process>().ToTable("Processes");
         modelBuilder.Entity<CommandProcess>();
         modelBuilder.Entity<WebsiteProcess>();
+        modelBuilder.Entity<AppProcess>();
 
         modelBuilder.Entity<Process>()
             .HasDiscriminator<ProcessType>("Discriminator")
             .HasValue<CommandProcess>(ProcessType.CommandProcess)
-            .HasValue<WebsiteProcess>(ProcessType.WebsiteProcess); 
+            .HasValue<WebsiteProcess>(ProcessType.WebsiteProcess)
+            .HasValue<AppProcess>(ProcessType.AppProcess); 
     }
 }

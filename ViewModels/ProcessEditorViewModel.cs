@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ReactiveUI;
 using WorkflowManager.Models.Common;
+using WorkflowManager.Services.Dialog;
 using WorkflowManager.ViewModels.Binding;
 using WorkflowManager.ViewModels.Common;
 
@@ -17,12 +19,15 @@ namespace WorkflowManager.ViewModels;
 public partial class ProcessEditorViewModel : ObservableValidator
 {
     private readonly IMapper _mapper;
+    private readonly IDialogService _dialogService;
     
     /// <summary>
     /// Expose all the possible process types to the view
     /// </summary>
     [ObservableProperty]
     private ProcessType[] _processTypes = Enum.GetValues(typeof(ProcessType)).Cast<ProcessType>().ToArray();
+
+    private readonly ProcessRegistry _processRegistry;
     
     /// <summary>
     /// A list of the processes added to the workflow
@@ -46,10 +51,14 @@ public partial class ProcessEditorViewModel : ObservableValidator
     /// </summary>
     private int? _editingIndex;
 
-    public ProcessEditorViewModel(IMapper mapper)
+    public ProcessEditorViewModel(IMapper mapper, IDialogService dialogService, ProcessRegistry processRegistry)
     {
         _mapper = mapper;
+        _dialogService = dialogService;
+        _processRegistry = processRegistry;
+        
         SubscribeToDiscriminatorChange();
+        
     }
 
     // Subscribe the view to know when the BindingModel.Discriminator is changed in order to cast it to a new type
@@ -66,7 +75,7 @@ public partial class ProcessEditorViewModel : ObservableValidator
     private void HandleDiscriminatorChange(ProcessType newType)
     {
         // Check whether it is already the correct type
-        Type targetType = ProcessRegistry.ProcessOptions[newType].GetType();
+        Type targetType = _processRegistry.Create(newType).GetType();
         if(BindingModel.GetType() == targetType)
             return;
         
@@ -144,5 +153,26 @@ public partial class ProcessEditorViewModel : ObservableValidator
     
         IsEditing = false;
         _editingIndex = null;
+    }
+    
+    /// <summary>
+    /// Selects an app for the AppProcessBiningModel
+    /// </summary>
+    [RelayCommand]
+    private async Task SelectApp()
+    {
+        if (BindingModel is AppProcessBindingModel appModel)
+        {
+            appModel.Directory = await _dialogService.PickExecutableAsync() ?? string.Empty;
+        }
+    }
+    
+    [RelayCommand]
+    private async Task SelectFile()
+    {
+        if (BindingModel is AppProcessBindingModel appModel)
+        {
+            appModel.ArgumentDirectory = await _dialogService.PickDocumentAsync() ?? string.Empty;
+        }
     }
 }

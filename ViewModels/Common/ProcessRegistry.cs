@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 using WorkflowManager.Models.Common;
+using WorkflowManager.Services.Dialog;
 using WorkflowManager.ViewModels.Binding;
 
 namespace WorkflowManager.ViewModels.Common;
@@ -7,12 +10,17 @@ namespace WorkflowManager.ViewModels.Common;
 /// <summary>
 /// A centralized static declaration of all the possible process form binding models.
 /// </summary>
-public static class ProcessRegistry
+public class ProcessRegistry(IServiceProvider provider)
 {
-    public static readonly Dictionary<ProcessType, ProcessBindingModel> ProcessOptions = new  Dictionary<ProcessType, ProcessBindingModel>()
+    public ProcessBindingModel Create(ProcessType type)
     {
-        { ProcessType.CommandProcess, new CommandProcessBindingModel()},
-        { ProcessType.WebsiteProcess, new WebsiteProcessBindingModel()}
-    };    
+        return type switch
+        {
+            ProcessType.CommandProcess => provider.GetRequiredService<CommandProcessBindingModel>(),
+            ProcessType.WebsiteProcess => provider.GetRequiredService<WebsiteProcessBindingModel>(),
+            ProcessType.AppProcess => provider.GetRequiredService<AppProcessBindingModel>(),
+            _ => throw new ArgumentOutOfRangeException(nameof(type))
+        };
+    }
 }
 
