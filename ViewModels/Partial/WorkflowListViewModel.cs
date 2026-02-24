@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using WorkflowManager.Services.Navigation;
+using WorkflowManager.Services.Window;
 using WorkflowManager.Services.Workflow;
 using WorkflowManager.Services.WorkflowState;
 
@@ -14,7 +16,9 @@ public partial class WorkflowListViewModel : ViewModelBase
     public WorkflowListViewModel(
         IWorkflowService workflowService,
         IWorkflowStateService workflowState,
-        INavigationService navigation)
+        INavigationService navigation,
+        IMapper mapper,
+        IWindowService windowService)
     {
         var models = workflowService.GetAllWorkflows();
 
@@ -22,8 +26,11 @@ public partial class WorkflowListViewModel : ViewModelBase
             w,
             workflowService,
             workflowState,
+            mapper,
             navigation,
-            OnCardDeleted));
+            windowService,
+            OnCardDeleted)
+        );
 
         _workflowCards = new ObservableCollection<WorkflowCardViewModel>(viewModels);
     }

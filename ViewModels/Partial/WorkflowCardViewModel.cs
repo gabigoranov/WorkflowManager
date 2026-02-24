@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AutoMapper;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WorkflowManager.Models;
+using WorkflowManager.Models.Common;
 using WorkflowManager.Services.Navigation;
+using WorkflowManager.Services.Window;
 using WorkflowManager.Services.Workflow;
 using WorkflowManager.Services.WorkflowState;
 
@@ -13,7 +16,9 @@ public partial class WorkflowCardViewModel(
     Workflow workflow,
     IWorkflowService workflowService,
     IWorkflowStateService workflowState,
+    IMapper mapper,
     INavigationService navigation,
+    IWindowService windowService,
     Action<WorkflowCardViewModel> onDeleteRequested)
     : ObservableObject
 {
@@ -51,7 +56,13 @@ public partial class WorkflowCardViewModel(
 
             foreach (var step in Workflow.Processes)
             {
-                await step.Execute();
+                System.Diagnostics.Process? process = await step.Execute();
+                ProcessWindowPreferences prefs = mapper.Map<ProcessWindowPreferences>(step);
+                if(process != null)
+                {
+                    await windowService.SetUpWindow(process, prefs);
+                }
+                    
             }
 
             Workflow = await workflowService.UpdateWorkflowLastStartupAsync(Workflow.Id);

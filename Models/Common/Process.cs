@@ -28,15 +28,19 @@ public abstract class Process
 
     public string Icon { get; set; } = "Power";
 
-    public bool IsFullscreen { get; set; } = false;
+    public bool IsMaximized { get; set; } = false;
 
     public string Monitor { get; set; } = "1";
 
-    public string Position { get; set; } = "100,100";
+    public int CoordX { get; set; } = 100;
+    public int CoordY { get; set; } = 100;
 
-    public string Size { get; set; } = "800x450";
+    public int Width { get; set; } = 1280;
+    public int Height { get; set; } = 900;
 
     public ProcessType Discriminator { get; set; }
 
-    public abstract Task Execute();
+    public abstract Task<System.Diagnostics.Process?> Execute();
+    
+    
 }

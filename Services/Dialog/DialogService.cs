@@ -7,7 +7,7 @@ using Avalonia.Platform.Storage;
 namespace WorkflowManager.Services.Dialog;
 
 // Instead of injecting a Window directly, inject a function that returns the main window
-public class DialogService(Func<Window> getWindow) : IDialogService
+public class DialogService(Func<Avalonia.Controls.Window> getWindow) : IDialogService
 {
     /// <inheritdoc/>
     public async Task<string?> SelectFolderAsync()

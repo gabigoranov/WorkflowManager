@@ -28,46 +28,22 @@ public class CommandProcess : Process
     /// <summary>
     /// Executes the command in the specified directory
     /// </summary>
-    public override async Task Execute()
+    public override async Task<System.Diagnostics.Process?> Execute()
     {
-        await Task.Run(() =>
+        ProcessStartInfo startInfo = new ProcessStartInfo
         {
-            try
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo
-                {
-                    FileName = "powershell.exe",
-                    // -NoProfile: prevents loading user profiles for speed
-                    // -Command: tells PS to execute the following string and exit
-                    Arguments = $"-NoProfile -Command \"{Command}\"",
-                    WorkingDirectory = Directory,
-                    UseShellExecute = false,
-                    CreateNoWindow = true, // Set to false if you want to see the popup
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true
-                };
+            FileName = "powershell.exe",
+            // -NoProfile: prevents loading user profiles for speed
+            // -Command: tells PS to execute the following string and exit
+            Arguments = $"-NoProfile -Command \"{Command}\"",
+            WorkingDirectory = Directory,
+            UseShellExecute = false,
+            CreateNoWindow = true, // Set to false if you want to see the popup
+            RedirectStandardOutput = true,
+            RedirectStandardError = true
+        };
 
-                using (System.Diagnostics.Process process = System.Diagnostics.Process.Start(startInfo)!)
-                {
-                    string output = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();
+        return System.Diagnostics.Process.Start(startInfo)!;
 
-                    process.WaitForExit();
-
-                    if (process.ExitCode != 0)
-                    {
-                        Debug.WriteLine($"Error: {error}");
-                    }
-                    else
-                    {
-                        Debug.WriteLine($"Output: {output}");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Failed to run PowerShell: {ex.Message}");
-            }
-        });
     }
 }

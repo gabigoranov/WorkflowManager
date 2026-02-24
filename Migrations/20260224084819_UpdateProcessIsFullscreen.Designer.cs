@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WorkflowManager.Data;
 
@@ -10,9 +11,11 @@ using WorkflowManager.Data;
 namespace WorkflowManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260224084819_UpdateProcessIsFullscreen")]
+    partial class UpdateProcessIsFullscreen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
@@ -23,16 +26,7 @@ namespace WorkflowManager.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CoordX")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CoordY")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("Discriminator")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Height")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Icon")
@@ -46,13 +40,18 @@ namespace WorkflowManager.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Width")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("WorkflowId")
                         .HasColumnType("INTEGER");

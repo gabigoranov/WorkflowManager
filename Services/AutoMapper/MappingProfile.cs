@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Linq;
+using AutoMapper;
 using WorkflowManager.Models;
 using WorkflowManager.Models.Common;
 using WorkflowManager.ViewModels.Binding;
@@ -67,6 +69,9 @@ public class MappingProfile : Profile
         CreateMap<ProcessBindingModel, CommandProcessBindingModel>();
         CreateMap<ProcessBindingModel, WebsiteProcessBindingModel>();
         CreateMap<ProcessBindingModel, AppProcessBindingModel>();
+
+        CreateMap<Models.Common.Process, ProcessWindowPreferences>()
+            .IncludeAllDerived();
         
         // Generic clone
         CreateMap<ProcessBindingModel, ProcessBindingModel>()

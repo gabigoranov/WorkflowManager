@@ -30,10 +30,16 @@ public partial class ProcessBindingModel : ObservableValidator
     private string _monitor = "1";
 
     [ObservableProperty]
-    private string _position = "100,100";
+    private int _coordX = 100;
 
     [ObservableProperty]
-    private string _size = "800x450";
+    private int _coordY = 100;
+
+    [ObservableProperty]
+    private int _width = 1280;
+
+    [ObservableProperty]
+    private int _height = 900;
 
     [ObservableProperty] 
     private ProcessType _discriminator = ProcessType.CommandProcess;

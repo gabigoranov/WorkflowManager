@@ -11,6 +11,7 @@ using WorkflowManager.Services.Navigation;
 using WorkflowManager.Services.Process;
 using WorkflowManager.Services.Startup;
 using WorkflowManager.Services.Theme;
+using WorkflowManager.Services.Window;
 using WorkflowManager.Services.Workflow;
 using WorkflowManager.Services.WorkflowState;
 using WorkflowManager.ViewModels;
@@ -76,6 +77,7 @@ public static class ServiceCollectionExtensions
         
         collection.AddTransient<WorkflowEditorViewModel>();
         collection.AddTransient<ProcessEditorViewModel>();
+        collection.AddTransient<IWindowService, MsWindowsWindowService>();
         
         collection.AddTransient<CommandProcessBindingModel>();
         collection.AddTransient<WebsiteProcessBindingModel>();

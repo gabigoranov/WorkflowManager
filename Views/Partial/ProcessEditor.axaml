@@ -88,26 +88,37 @@
                             Watermark="ID" FontSize="{DynamicResource Spacing.Xs}" Padding="10,5" />
                     </StackPanel>
 
-                    <StackPanel Grid.Row="0" Grid.Column="2">
-                        <TextBlock Text="Size" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText" />
-                        <TextBox
-                            Text="{Binding BindingModel.Size, UpdateSourceTrigger=LostFocus}"
-                            Watermark="WxH" FontSize="{DynamicResource FontSize.Xs}" Padding="10,5" />
-                    </StackPanel>
+                    <Grid Grid.Row="0" Grid.Column="2" ColumnDefinitions="*, *">
+                        <StackPanel Grid.Column="0" Margin="0,0,2,0">
+                            <TextBlock Text="Width" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText" />
+                            <TextBox Text="{Binding BindingModel.Width, UpdateSourceTrigger=LostFocus}"
+                                     FontSize="{DynamicResource FontSize.Xs}" Padding="10,5" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="2,0,0,0">
+                            <TextBlock Text="Height" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText" />
+                            <TextBox Text="{Binding BindingModel.Height, UpdateSourceTrigger=LostFocus}"
+                                     FontSize="{DynamicResource FontSize.Xs}" Padding="10,5" />
+                        </StackPanel>
+                    </Grid>
 
                     <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
                                 Margin="{DynamicResource Spacing.Top.Sm}">
                         <TextBlock Text="Window Position" FontSize="{DynamicResource FontSize.2Xs}" Classes="SecondaryText" />
-                        <TextBox
-                            Text="{Binding BindingModel.Position, UpdateSourceTrigger=LostFocus}"
-                            Watermark="e.g. 100,100" FontSize="{DynamicResource FontSize.Xs}" Padding="10,5" />
+                        <Grid ColumnDefinitions="*, *">
+                            <TextBox Grid.Column="0" Margin="0,0,5,0"
+                                     Text="{Binding BindingModel.CoordX, UpdateSourceTrigger=LostFocus}"
+                                     Watermark="X" FontSize="{DynamicResource FontSize.Xs}" Padding="10,5" />
+                            <TextBox Grid.Column="1"
+                                     Text="{Binding BindingModel.CoordY, UpdateSourceTrigger=LostFocus}"
+                                     Watermark="Y" FontSize="{DynamicResource FontSize.Xs}" Padding="10,5" />
+                        </Grid>
                     </StackPanel>
                 </Grid>
 
                 <!-- Submit button -->
                 <Button
                     Content="{Binding IsEditing, Converter={StaticResource StringSelectConverter}, ConverterParameter='Save Changes|Add Process'}"
-                    Classes="ActionButton Elevated"
+                    Classes="ActionButton"
                     Command="{Binding AddOrEditProcessCommand}"
                     HorizontalAlignment="Right" HotKey="Enter" />
             </StackPanel>

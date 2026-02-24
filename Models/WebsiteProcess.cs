@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using WorkflowManager.Models.Common;
@@ -16,7 +17,7 @@ public class WebsiteProcess : Process
     [Required]
     public string URL { get; set; }
     
-    public override Task Execute()
+    public override async Task<System.Diagnostics.Process?> Execute()
     {
         // Use ProcessStartInfo to enable ShellExecute
         var psi = new ProcessStartInfo
@@ -25,8 +26,6 @@ public class WebsiteProcess : Process
             UseShellExecute = true
         };
 
-        System.Diagnostics.Process.Start(psi);
-        
-        return Task.CompletedTask;
+        return System.Diagnostics.Process.Start(psi);
     }
 }
