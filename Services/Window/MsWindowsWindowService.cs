@@ -17,10 +17,11 @@ public class MsWindowsWindowService : IWindowService
     /// <param name="timeoutMs">The maximum allotted time in milliseconds</param>
     /// <returns>The main window handle of the loaded process</returns>
     /// <exception cref="TimeoutException">If the timeout is reached</exception>
-    private static async Task<IntPtr> WaitForMainWindowHandleAsync(System.Diagnostics.Process process, int timeoutMs = 10000)
+    private static async Task<IntPtr> WaitForMainWindowHandleAsync(System.Diagnostics.Process process,
+        int timeoutMs = 10000)
     {
         var stopWatch = System.Diagnostics.Stopwatch.StartNew();
-        
+
         while (stopWatch.ElapsedMilliseconds < timeoutMs)
         {
             process.Refresh(); // Refresh the process state
@@ -32,27 +33,37 @@ public class MsWindowsWindowService : IWindowService
 
         throw new TimeoutException($"Could not find MainWindowHandle for {process.ProcessName} within {timeoutMs}ms");
     }
-    
+
     /// <inheritdoc/>
     public async Task SetUpWindow(System.Diagnostics.Process process, ProcessWindowPreferences windowPreferences)
     {
-        // wait until the process is fully loaded, otherwise manipulations dont work
-        await WaitForMainWindowHandleAsync(process);
-        
-        await SetWindowDimensions(
+        // wait until the process is fully loaded, otherwise manipulations don't work
+        IntPtr mainWindowHandle = await WaitForMainWindowHandleAsync(process);
+
+        SetWindowDimensions(
             windowPreferences.Width,
-            windowPreferences.Height, 
+            windowPreferences.Height,
             windowPreferences.CoordX,
             windowPreferences.CoordY,
             windowPreferences.IsMaximized,
-            process.MainWindowHandle);   
+            mainWindowHandle);
     }
 
     /// <inheritdoc/>
-    public Task SetWindowDimensions(int width, int height, int coordX, int coordY, bool isMaximized, IntPtr hWnd)
+    public void SetWindowDimensions(int width, int height, int coordX, int coordY, bool isMaximized, IntPtr hWnd)
     {
-        bool isSuccessful = Win32Reference.MoveWindow(hWnd, coordX, coordY, width, height, true);
-        return Task.CompletedTask;
+        // Firstly, move the window so that if it is restored by the user it has the right dimensions
+        Win32Reference.MoveWindow(hWnd, coordX, coordY, width, height, true);
+        
+        SetWindowSWState(hWnd, isMaximized);
+    }
+    
+    /// <inheritdoc/>
+    public void SetWindowSWState(IntPtr hWnd, bool isMaximized)
+    {
+        // Then, restore or maximize the window
+        if (isMaximized) Win32Reference.ShowWindowAsync(hWnd, (int)Win32Constants.SW.SHOWMAXIMIZED);
+        else Win32Reference.ShowWindowAsync(hWnd, (int)Win32Constants.SW.RESTORE);
     }
 
     /// <inheritdoc/>

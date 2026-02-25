@@ -28,7 +28,15 @@ public interface IWindowService
     /// <param name="isMaximized">If the window should be maximized</param>
     /// <param name="hWnd">The window handle to use for managing the window</param>
     /// <returns></returns>
-    public Task SetWindowDimensions(int width, int height, int coordX, int coordY, bool isMaximized, IntPtr hWnd);
+    public void SetWindowDimensions(int width, int height, int coordX, int coordY, bool isMaximized, IntPtr hWnd);
+
+    /// <summary>
+    /// A helper function to set the window SW state ( maximized, restored, minimized, etc )
+    /// </summary>
+    /// <param name="hWnd">The window handler</param>
+    /// <param name="isMaximized">Whether it should be maximized or resstored</param>
+    public void SetWindowSWState(IntPtr hWnd, bool isMaximized);
+    
 
     /// <summary>
     /// Defines in which monitor a window should be opened

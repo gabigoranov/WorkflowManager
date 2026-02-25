@@ -24,7 +24,7 @@ public partial class ProcessBindingModel : ObservableValidator
     private string _icon = "Power";
 
     [ObservableProperty]
-    private bool _isFullscreen = false;
+    private bool _isMaximized = false;
 
     [ObservableProperty]
     private string _monitor = "1";

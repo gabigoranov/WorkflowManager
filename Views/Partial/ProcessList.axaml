@@ -36,7 +36,7 @@
                                                Classes="SecondaryText" FontSize="{DynamicResource FontSize.2Xs}" />
                                     <TextBlock Text="Fullscreen" Classes="OnAccentText"
                                                Background="{DynamicResource Color.Primary}" Padding="4,0" FontSize="10"
-                                               IsVisible="{Binding IsFullscreen}" />
+                                               IsVisible="{Binding IsMaximized}" />
                                 </StackPanel>
                             </StackPanel>
                             

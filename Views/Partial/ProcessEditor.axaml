@@ -78,7 +78,7 @@
                 <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto"
                       Margin="{DynamicResource Spacing.Vertical.Xs}">
                     <CheckBox Grid.Row="0" Grid.Column="0"
-                              IsChecked="{Binding BindingModel.IsFullscreen}"
+                              IsChecked="{Binding BindingModel.IsMaximized}"
                               Content="Fullscreen" />
 
                     <StackPanel Grid.Row="0" Grid.Column="1" Margin="{DynamicResource Spacing.Horizontal.Sm}">

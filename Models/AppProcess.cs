@@ -24,16 +24,18 @@ public class AppProcess : Process
     /// <returns>The window handle if successful</returns>
     public override async Task<System.Diagnostics.Process?> Execute()
     {
-        ProcessStartInfo startInfo = new ProcessStartInfo
+        var startInfo = new ProcessStartInfo
         {
-            FileName = Directory, // Ensure this points to powershell.exe
-            Arguments = $"-NoProfile {ArgumentDirectory}",
-            UseShellExecute = false,
-            CreateNoWindow = true,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true
+            FileName = Directory,
+            UseShellExecute = true,
+            CreateNoWindow = false
         };
 
-        return System.Diagnostics.Process.Start(startInfo)!;
+        if (!string.IsNullOrWhiteSpace(ArgumentDirectory))
+        {
+            startInfo.Arguments = $"\"{ArgumentDirectory}\"";
+        }
+
+        return System.Diagnostics.Process.Start(startInfo);
     }
 }
